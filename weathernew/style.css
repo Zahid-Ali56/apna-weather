@@ -1,0 +1,197 @@
+/* Core Styling Rules */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: #0b0f19;
+    background-image: radial-gradient(circle at 10% 20%, rgba(0, 180, 219, 0.05) 0%, transparent 90%),
+                      radial-gradient(circle at 90% 80%, rgba(17, 153, 142, 0.05) 0%, transparent 90%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #f3f4f6;
+}
+
+.dashboard-wrapper {
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Glassmorphism Header Bar */
+.search-container {
+    background: rgba(22, 28, 45, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 16px 24px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.search-form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.input-group:focus-within {
+    border-color: #00b4db;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.input-group i {
+    color: #6b7280;
+    font-size: 18px;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+}
+
+.btn-action {
+    padding: 12px 24px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn-search { background: #00b4db; color: #fff; }
+.btn-geo { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+.btn-action:hover { transform: translateY(-2px); opacity: 0.95; }
+
+/* Dashboard Layout Architecture */
+.main-dashboard {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Main Status Display Panel */
+.hero-weather-card {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+}
+
+.meta-location h2 { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 6px; }
+.meta-location p { color: #9ca3af; font-size: 14px; margin-bottom: 16px; }
+.badge-condition { background: rgba(0, 180, 219, 0.15); color: #00b4db; padding: 6px 16px; border-radius: 30px; font-size: 13px; font-weight: 600; text-transform: uppercase; border: 1px solid rgba(0, 180, 219, 0.2); }
+
+.temperature-display h1 { font-size: 84px; font-weight: 800; letter-spacing: -2px; color: #fff; }
+.temperature-display h1 sup { font-size: 32px; font-weight: 400; top: -30px; margin-left: 5px; color: #00b4db; }
+
+/* Meteorological Cards Grid */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 15px;
+    grid-column: span 1;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+.card:hover { transform: scale(1.03); background: rgba(30, 41, 59, 0.6); }
+.card i { font-size: 26px; margin-bottom: 12px; }
+.card .label { font-size: 12px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; }
+.card h3 { font-size: 20px; font-weight: 600; margin-top: 6px; color: #f3f4f6; }
+
+/* Macro Color Maps */
+.color-feel { color: #f59e0b; }
+.color-humid { color: #3b82f6; }
+.color-wind { color: #10b981; }
+.color-uv { color: #a855f7; }
+.color-solar { color: #ec4899; }
+
+/* 7-Days Extended Forecast View */
+.forecast-section {
+    grid-column: span 1;
+    background: rgba(22, 28, 45, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 24px;
+    padding: 24px;
+}
+.forecast-section h3 { font-size: 16px; font-weight: 600; color: #9ca3af; margin-bottom: 16px; display: flex; gap: 8px; align-items: center; }
+.forecast-container { display: flex; flex-direction: column; gap: 10px; }
+.forecast-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.02); }
+.day-title { font-weight: 600; width: 50px; color: #fff; }
+.forecast-condition-text { font-size: 13px; color: #9ca3af; max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.range-bar-temp { display: flex; gap: 12px; font-size: 14px; font-weight: 600; }
+.t-max { color: #f59e0b; }
+.t-min { color: #3b82f6; }
+
+/* Map Presentation Frame */
+.map-section {
+    grid-column: span 2;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+#live-viewport-map {
+    height: 320px;
+    width: 100%;
+}
+
+/* Notification Popups */
+.error-toast {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+    padding: 14px 20px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Responsive Adaptive Viewports */
+@media (max-width: 768px) {
+    .main-dashboard { grid-template-columns: 1fr; }
+    .hero-weather-card, .metrics-grid, .forecast-section, .map-section { grid-column: span 1; }
+    .hero-weather-card { padding: 25px; flex-direction: column; text-align: center; gap: 20px; }
+    .temperature-display h1 { font-size: 64px; }
+}
